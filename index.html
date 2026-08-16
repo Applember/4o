@@ -424,13 +424,16 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Only include if approved === "yes"
         if (word && approved && approved.toLowerCase() === 'yes') {
-          words.push({
-            id: i,
-            w: word.trim(),
-            note: '', // No note from form yet
-            h: '@anonymous' // Default handle
-          });
-        }
+  const reason = columns[2] || '';
+  const handle = columns[3] || '@anonymous';
+  
+  words.push({
+    id: i,
+    w: word.trim(),
+    note: reason.trim(),
+    h: handle.trim() || '@anonymous'
+  });
+}
       }
       
       DATA = words;
